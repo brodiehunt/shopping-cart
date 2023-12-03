@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-
+import Header from './components/Header.jsx';
 import './App.css'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
   }, [])
   return (
     <div>
-      <div >Navbar</div>
+      <Header />
       <main>
         <Outlet />
       </main>

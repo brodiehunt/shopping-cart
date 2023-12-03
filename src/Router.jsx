@@ -4,14 +4,14 @@ import Home from './pages/Home.jsx';
 import ProductList from './pages/ProductList.jsx';
 import Product from './pages/Product.jsx';
 import ShoppingCart from './pages/ShoppingCart.jsx';
-
+import ErrorPage from './pages/ErrorPage.jsx';
 
 const Router = () => {
   const router = createBrowserRouter([
     {
       path: '/',
       element: <App />,
-      errorElement: <h1>This is the error page</h1>,
+      errorElement: <ErrorPage />,
       children: [
         {index: true, element: <Home />},
         {
