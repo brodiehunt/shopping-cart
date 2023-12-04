@@ -1,25 +1,32 @@
 import {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom';
 import ProductImageState from '../components/ProductImageState.jsx';
 import IconPlus from '../assets/icon-plus.svg';
 import IconMinus from '../assets/icon-minus.svg';
-import IconNext from '../assets/icon-next.svg';
-import IconPrevious from '../assets/icon-next.svg';
 import IconCart from '../assets/icon-cart-white.svg';
 
 const Product = () => {
   const [product, setProduct] = useState(null);
   const [currentQuantity, setCurrentQuantity] = useState(0);
+  const {productId} = useParams(); 
 
   useEffect(() => {
-    const sampleData = {
-      title: "Fall Limited Edition Sneakers",
-      description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
-      price: 125.00,
-      discount: "50%",
-      oldPrice: 250.00,
-      image: ['image-product-1.jpg', 'image-product-2.jpg', 'image-product-3.jpg', 'image-product-4.jpg'],
+    console.log(productId);
+    if (productId == 0) {
+      const sampleData = {
+        title: "Fall Limited Edition Sneakers",
+        description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+        price: 125.00,
+        discount: "50%",
+        oldPrice: 250.00,
+        image: ['image-product-1.jpg', 'image-product-2.jpg', 'image-product-3.jpg', 'image-product-4.jpg'],
+      }
+      setProduct(sampleData);
+    } else {
+      // do something with api data
     }
-    setProduct(sampleData);
+    
+    
   }, []);
 
   function changeQuantity(isIncrease) {
