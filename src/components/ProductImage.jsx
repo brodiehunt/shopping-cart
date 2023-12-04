@@ -17,7 +17,7 @@ const ProductImage = (
       <div className="lrg-image-container">
         {multipleImages && <button className="previous-icon">
           <img 
-            onClick={() => handleChangeCurrentImage(false)}
+            onClick={(event) => handleChangeCurrentImage(event, false)}
             src={IconPrevious} 
             alt="previous image icon"/>
         </button>}
@@ -29,7 +29,7 @@ const ProductImage = (
         />
         {multipleImages && <button className="next-icon">
           <img
-            onClick={() => handleChangeCurrentImage(true)}
+            onClick={(event) => handleChangeCurrentImage(event, true)}
             src={IconNext} 
             alt="next image icon"/>
         </button>}

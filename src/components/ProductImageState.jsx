@@ -9,7 +9,8 @@ const ProductImageState = ({lrgImages}) => {
 
   const multipleImages = lrgImages.length > 1 ? true : false;
   
-  function handleChangeCurrentImage(isNext) {
+  function handleChangeCurrentImage(event, isNext) {
+    event.stopPropagation();
     let nextIndex
     if (isNext) {
       nextIndex = (currentImageIndex + 1) % (lrgImages.length);
@@ -59,33 +60,14 @@ const ProductImageState = ({lrgImages}) => {
         />
       </div>
     }
-    <div className="product-img-component">
-      <div className="lrg-image-container">
-        {multipleImages && <button className="previous-icon">
-          <img 
-            onClick={() => handleChangeCurrentImage(false)}
-            src={IconPrevious} 
-            alt="previous image icon"/>
-        </button>}
-        <img 
-          onClick={toggleModal}
-          src={`/${lrgImages[currentImageIndex]}`} 
-          alt="Some dynamic alt"
-          className="display-img"
-        />
-        {multipleImages && <button className="next-icon">
-          <img
-            onClick={() => handleChangeCurrentImage(true)}
-            src={IconNext} 
-            alt="next image icon"/>
-        </button>}
-      </div>
-      {multipleImages &&
-        <div className="thumbnails-container">
-          {imgGrid}
-        </div>
-      }
-    </div>
+    <ProductImage 
+      lrgImages={lrgImages}
+      multipleImages={multipleImages}
+      currentImageIndex={currentImageIndex}
+      handleChangeCurrentImage={handleChangeCurrentImage}
+      toggleModal={toggleModal}
+      imgGrid={imgGrid}
+    />
     </>
   )
 };

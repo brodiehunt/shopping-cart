@@ -43,13 +43,17 @@ const Product = () => {
       <div className="price-info">
         <div className="price">
           {`$${product.price}.00`} 
-          <span className="discount">
-            {product.discount}
-          </span>
+          {product.discount && 
+            <span className="discount">
+              {product.discount}
+            </span>
+          }
         </div>
-        <div className="price-old">
-          {`$${product.oldPrice}.00`}
-        </div>
+        {product.oldPrice &&
+          <div className="price-old">
+            {`$${product.oldPrice}.00`}
+          </div>
+        }
       </div>
       <div className="btns-container">
         <div className="quantity-container">
