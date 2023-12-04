@@ -7,6 +7,8 @@ import IconCart from '../assets/icon-cart-white.svg';
 
 const Product = () => {
   const [product, setProduct] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [currentQuantity, setCurrentQuantity] = useState(0);
   const {productId} = useParams(); 
 
@@ -16,14 +18,34 @@ const Product = () => {
       const sampleData = {
         title: "Fall Limited Edition Sneakers",
         description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
-        price: 125.00,
+        price: "125.00",
         discount: "50%",
-        oldPrice: 250.00,
-        image: ['image-product-1.jpg', 'image-product-2.jpg', 'image-product-3.jpg', 'image-product-4.jpg'],
+        oldPrice: "250.00",
+        image: ['/image-product-1.jpg', '/image-product-2.jpg', '/image-product-3.jpg', '/image-product-4.jpg'],
       }
       setProduct(sampleData);
+      setLoading(false);
     } else {
       // do something with api data
+      
+      fetch(`https://fakestoreapi.com/products/${productId}`)
+        .then((response)=> {
+          if (response.status >= 400) {
+            throw new Error("server error")
+          }
+          return response.json()
+        })
+        .then((data) => {
+          const transformedData = {...data, image: [data.image]};
+          console.log(transformedData);
+          setProduct(transformedData);
+        })
+        .catch((error) => {
+          setError(error);
+        })
+        .finally(() => {
+          setLoading(false);
+        })
     }
     
     
@@ -38,48 +60,49 @@ const Product = () => {
     }
   }
 
+  if (error) return <p>There was an error bro</p>
+  if (loading) return <p>Loading.......</p>
   return (
-    product && <div className="product-container">
-    <ProductImageState lrgImages={product.image}/>
-    <div className="product-info">
-      <div className="company">Sneaker company</div>
-      <h1>{product.title}</h1>
-      <p className="description">
-        {product.description}
-      </p>
-      <div className="price-info">
-        <div className="price">
-          {`$${product.price}.00`} 
-          {product.discount && 
-            <span className="discount">
-              {product.discount}
-            </span>
+    <div className="product-container">
+      <ProductImageState lrgImages={product.image}/>
+      <div className="product-info">
+        <div className="company">Sneaker company</div>
+        <h1>{product.title}</h1>
+        <p className="description">
+          {product.description}
+        </p>
+        <div className="price-info">
+          <div className="price">
+            {`$${product.price}`} 
+            {product.discount && 
+              <span className="discount">
+                {product.discount}
+              </span>
+            }
+          </div>
+          {product.oldPrice &&
+            <div className="price-old">
+              {`$${product.oldPrice}`}
+            </div>
           }
         </div>
-        {product.oldPrice &&
-          <div className="price-old">
-            {`$${product.oldPrice}.00`}
+        <div className="btns-container">
+          <div className="quantity-container">
+            <button onClick={() => changeQuantity(false)}>
+              <img src={IconMinus} alt="Decrease quantity button icon"/>
+            </button>
+            <span className="quantity">{currentQuantity}</span>
+            <button onClick={() => changeQuantity(true)}>
+              <img src={IconPlus} alt="Increase quantity button icon"/>
+            </button>
           </div>
-        }
-      </div>
-      <div className="btns-container">
-        <div className="quantity-container">
-          <button onClick={() => changeQuantity(false)}>
-            <img src={IconMinus} alt="Decrease quantity button icon"/>
-          </button>
-          <span className="quantity">{currentQuantity}</span>
-          <button onClick={() => changeQuantity(true)}>
-            <img src={IconPlus} alt="Increase quantity button icon"/>
+          <button className="add-cart-btn">
+            <img src={IconCart} alt="add to cart icon"/>
+            Add to cart
           </button>
         </div>
-        <button className="add-cart-btn">
-          <img src={IconCart} alt="add to cart icon"/>
-          Add to cart
-        </button>
       </div>
-    </div>
-  </div>
-      
+    </div>  
   )
 }
 

@@ -23,7 +23,7 @@ const ProductImage = (
         </button>}
         <img 
           onClick={() => toggleModal()}
-          src={`/${lrgImages[currentImageIndex]}`} 
+          src={lrgImages[currentImageIndex]} 
           alt="Some dynamic alt"
           className="display-img"
         />

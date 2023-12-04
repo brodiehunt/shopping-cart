@@ -1,8 +1,7 @@
 import {useState} from 'react';
 import ProductImage from './ProductImage.jsx';
 import IconExit from '../assets/icon-exit-orange.svg';
-import IconNext from '../assets/icon-next.svg';
-import IconPrevious from '../assets/icon-previous.svg';
+
 const ProductImageState = ({lrgImages}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
@@ -37,7 +36,7 @@ const ProductImageState = ({lrgImages}) => {
         >
         <img
           onClick={() => handleChangeImageClick(index)}
-          src={`/${url}`} 
+          src={url} 
           alt="some dynamic alt tag"/>
       </div>
     )
