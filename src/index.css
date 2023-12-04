@@ -291,10 +291,15 @@ header .logo {
 }
 
 /* PRODUCT IMAGE COMPONENT STYLES */
+.product-img-component {
+	max-width: 500px;
+}
+
 .lrg-image-container {
 	max-width: 500px;
 	margin: 0 auto;
 	position: relative;
+	cursor: pointer;
 }
 
 .lrg-image-container .display-img {
@@ -327,6 +332,34 @@ header .logo {
 
 .thumbnails-container {
 	display: none;
+}
+
+/* Product PAGE MODAL */ 
+.product-container .modal {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.75);
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	z-index: 2;
+}
+
+.product-container .modal .exit-btn {
+	position: relative;
+	left: 240px;
+	top: -50px;
+	background-color: transparent;
+	border:none;
+}
+.product-container .modal .exit-btn img{
+	width: 20px;
+	cursor: pointer;
 }
 /* Footer Styles */
 
@@ -443,6 +476,7 @@ footer .icon-link img{
 	.product-container {
 		max-width: 1000px;
 		margin: 7rem auto;
+		margin-top: 4rem;
 		padding: 0 1rem;
 		display: grid;
 		grid-gap: 1rem;

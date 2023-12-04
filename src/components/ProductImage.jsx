@@ -1,38 +1,16 @@
-import {useState} from 'react';
+import IconExit from '../assets/icon-close.svg';
 import IconNext from '../assets/icon-next.svg';
 import IconPrevious from '../assets/icon-previous.svg';
 
-const ProductImage = ({lrgImages}) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const multipleImages = lrgImages.length > 1 ? true : false;
-  console.log(currentImageIndex);
-  function handleChangeCurrentImage(isNext) {
-    let nextIndex
-    if (isNext) {
-      nextIndex = (currentImageIndex + 1) % (lrgImages.length);
-    } else {
-      nextIndex = (currentImageIndex - 1 + lrgImages.length) % (lrgImages.length);
-    }
-    setCurrentImageIndex(nextIndex);
-  }
-
-  function handleChangeImageClick(index) {
-    setCurrentImageIndex(index);
-  }
-
-  const imgGrid = lrgImages.map((url, index) => {
-    return (
-      <div 
-        className={currentImageIndex === index ? 'grid-img-container active': 'grid-img-container'}
-        key={url}
-        >
-        <img
-          onClick={() => handleChangeImageClick(index)}
-          src={`/${url}`} 
-          alt="some dynamic alt tag"/>
-      </div>
-    )
-  })
+const ProductImage = (
+  {
+    lrgImages, 
+    currentImageIndex,
+    multipleImages, 
+    handleChangeCurrentImage,
+    toggleModal, 
+    imgGrid
+  }) => {
 
   return (
     <div className="product-img-component">
@@ -44,6 +22,7 @@ const ProductImage = ({lrgImages}) => {
             alt="previous image icon"/>
         </button>}
         <img 
+          onClick={() => toggleModal()}
           src={`/${lrgImages[currentImageIndex]}`} 
           alt="Some dynamic alt"
           className="display-img"
@@ -62,6 +41,6 @@ const ProductImage = ({lrgImages}) => {
       }
     </div>
   )
-};
+}
 
 export default ProductImage;

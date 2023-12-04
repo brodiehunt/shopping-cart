@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import ProductImage from '../components/ProductImage.jsx';
+import ProductImageState from '../components/ProductImageState.jsx';
 import IconPlus from '../assets/icon-plus.svg';
 import IconMinus from '../assets/icon-minus.svg';
 import IconNext from '../assets/icon-next.svg';
@@ -33,7 +33,7 @@ const Product = () => {
 
   return (
     product && <div className="product-container">
-    <ProductImage lrgImages={product.image}/>
+    <ProductImageState lrgImages={product.image}/>
     <div className="product-info">
       <div className="company">Sneaker company</div>
       <h1>{product.title}</h1>
