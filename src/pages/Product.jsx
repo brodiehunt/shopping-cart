@@ -9,6 +9,7 @@ import IconCart from '../assets/icon-cart-white.svg';
 const Product = () => {
   const [product, setProduct] = useState(null);
   const [currentQuantity, setCurrentQuantity] = useState(0);
+
   useEffect(() => {
     const sampleData = {
       title: "Fall Limited Edition Sneakers",
@@ -16,14 +17,23 @@ const Product = () => {
       price: 125.00,
       discount: "50%",
       oldPrice: 250.00,
-      image: ['image-product-1.jpg', 'image-product-2.jpg', 'image-product-3.jpg', 'image-product-4.jpg', 'image-product-5.jpg'],
-      imageThumb: ['image-product-thumbnail-1.jpg', 'image-product-thumbnail-2.jpg', 'image-product-thumbnail-3.jpg', 'image-product-thumbnail-4.jpg', 'image-product-thumbnail-5.jpg']
+      image: ['image-product-1.jpg', 'image-product-2.jpg', 'image-product-3.jpg', 'image-product-4.jpg'],
     }
     setProduct(sampleData);
   }, []);
+
+  function changeQuantity(isIncrease) {
+    if (isIncrease) {
+      setCurrentQuantity(currentQuantity + 1);
+    } else {
+      if (currentQuantity === 0) return
+      setCurrentQuantity(currentQuantity -1);
+    }
+  }
+
   return (
     product && <div className="product-container">
-    <ProductImage />
+    <ProductImage lrgImages={product.image}/>
     <div className="product-info">
       <div className="company">Sneaker company</div>
       <h1>{product.title}</h1>
@@ -43,11 +53,11 @@ const Product = () => {
       </div>
       <div className="btns-container">
         <div className="quantity-container">
-          <button>
+          <button onClick={() => changeQuantity(false)}>
             <img src={IconMinus} alt="Decrease quantity button icon"/>
           </button>
           <span className="quantity">{currentQuantity}</span>
-          <button>
+          <button onClick={() => changeQuantity(true)}>
             <img src={IconPlus} alt="Increase quantity button icon"/>
           </button>
         </div>

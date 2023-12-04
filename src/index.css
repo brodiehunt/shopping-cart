@@ -181,6 +181,8 @@ header .logo {
 
 .product-info {
 	padding: 1.5rem;
+	max-width: 500px;
+	margin: 0 auto;
 }
 
 .product-info .company {
@@ -258,6 +260,7 @@ header .logo {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 }
 
 .product-info .quantity-container span {
@@ -287,6 +290,44 @@ header .logo {
 	background-color: var(--primary-hover);
 }
 
+/* PRODUCT IMAGE COMPONENT STYLES */
+.lrg-image-container {
+	max-width: 500px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.lrg-image-container .display-img {
+	width: 100%;
+	object-fit: contain;
+}
+
+.lrg-image-container button {
+	position: absolute;
+	background-color: white;
+	border: none;
+	border-radius: 50%;
+	display: flex; 
+	justify-content: center;
+	align-items: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+
+.lrg-image-container .previous-icon {
+	left: 1rem;
+}
+
+.lrg-image-container .next-icon {
+ right: 1rem;
+}
+
+.thumbnails-container {
+	display: none;
+}
 /* Footer Styles */
 
 footer {
@@ -402,7 +443,9 @@ footer .icon-link img{
 	.product-container {
 		max-width: 1000px;
 		margin: 7rem auto;
+		padding: 0 1rem;
 		display: grid;
+		grid-gap: 1rem;
 		grid-template-columns: 1fr 1fr;
 	}
 
@@ -433,7 +476,38 @@ footer .icon-link img{
 		align-items: start;
 	}
 
+	/* PRODUCT IMAGE COMPONENT */
+	.lrg-image-container {
+		margin-bottom: 2rem;
+	}
 
+	.lrg-image-container button {
+		display: none;
+	}
+
+	.thumbnails-container {
+		display: grid;
+		grid-gap: 2rem;
+		grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+	}
+
+	.thumbnails-container .grid-img-container {
+		border-radius: 1rem;
+	}
+	.thumbnails-container .grid-img-container.active {
+		opacity: 0.5;
+	}
+	
+	.thumbnails-container img {
+		width: 100%;
+		overflow: hidden;
+		border-radius: 1rem;
+		cursor: pointer;
+	}
+
+	.thumbnails-container img:hover {
+		border: 2px solid var(--primary);
+	}
 
 	/* Footer Styles */
 	footer {
@@ -470,6 +544,10 @@ footer .icon-link img{
 		margin-left: 3rem;
 	}
 
+	/* Single product page */
+	.product-container {
+		grid-gap: 5rem;
+	}
 	/* Footer styles */
 	footer {
 		gap: 10rem;
