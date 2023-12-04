@@ -1,11 +1,20 @@
+import {Link} from 'react-router-dom';
 import Navbar from './Navbar.jsx';
-
+import Logo from '../assets/logo.svg';
+import Avatar from '../assets/image-avatar.png';
+import CartDropdown from './CartDropdown.jsx';
 const Header = () => {
 
   return (
     <header>
-      This is the header
       <Navbar />
+      <Link to="/">
+       <img className="logo" src={Logo} alt="Sneakers Company Logo"/>
+      </Link>
+      <CartDropdown />
+      <div className="profile-icon-container">
+        <img src={Avatar} alt="User profile avatar"/>
+      </div>
     </header>
   )
 }
