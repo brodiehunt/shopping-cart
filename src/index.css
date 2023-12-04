@@ -174,6 +174,39 @@ header .logo {
 	width: 100%;
 }
 
+/* Footer Styles */
+
+footer {
+	background-color: var(--primary);
+	color: white;
+	padding: 4.5rem 1.5rem;
+	border-radius: 0rem 6.25rem 0rem 0rem;
+	text-align: center;
+}
+
+footer .logo-container {
+	margin-bottom: 3rem;
+}
+
+footer .link-container {
+	margin-bottom: 2.5rem;
+}
+
+footer h2 {
+	margin-bottom: 1.5rem;
+	font-size: 1.125rem;
+	font-weight: 700;
+}
+
+footer li {
+	margin-bottom: 1rem;
+	cursor: pointer;
+}
+
+footer .icon-link img{
+	margin-right: 0.5rem;
+}
+
 @media (min-width: 768px) {
 
 	/* HEADER STYLES */
@@ -252,6 +285,17 @@ header .logo {
 
 	/* Product Cart Nav - dropdown */
 
+	/* Footer Styles */
+	footer {
+		display: flex;
+		justify-content: center;
+		text-align: left;
+		gap: 4rem;
+	}
+
+	footer .link-container {
+		margin-bottom: 0;
+	}
 }
 
 @media (min-width: 1024px) {
@@ -274,6 +318,11 @@ header .logo {
 
 	header .profile-icon-container {
 		margin-left: 3rem;
+	}
+
+	/* Footer styles */
+	footer {
+		gap: 10rem;
 	}
 }
 
