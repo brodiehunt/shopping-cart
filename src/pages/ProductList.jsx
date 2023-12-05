@@ -1,6 +1,9 @@
 import {useEffect, useState} from 'react';
 import {useParams, useOutletContext} from 'react-router-dom';
 import ProductCard from "../components/ProductCard";
+import ErrorComponent from '../components/ErrorComponent';
+import LoadingComponent from '../components/LoadingComponent';
+
 
 const ProductList = () => {
   const [itemList, setitemList] = useState(null);
@@ -47,8 +50,8 @@ const ProductList = () => {
     )
   }) : null;
 
-  if (loading) return <p>Still loading</p>
-  if (error) return <p>Error</p>
+  if (loading) return <LoadingComponent />
+  if (error) return <ErrorComponent error={error} />
   return (
     <section className="product-card-grid">
       <ProductCard 

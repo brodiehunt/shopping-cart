@@ -4,6 +4,9 @@ import ProductImageState from '../components/ProductImageState.jsx';
 import IconPlus from '../assets/icon-plus.svg';
 import IconMinus from '../assets/icon-minus.svg';
 import IconCart from '../assets/icon-cart-white.svg';
+import ErrorComponent from '../components/ErrorComponent.jsx';
+import LoadingComponent from '../components/LoadingComponent.jsx';
+
 
 const Product = () => {
   const [product, setProduct] = useState(null);
@@ -70,8 +73,8 @@ const Product = () => {
     }
   }
 
-  if (error) return <p>There was an error bro</p>
-  if (loading) return <p>Loading.......</p>
+  if (error) return <ErrorComponent error={error}/>
+  if (loading) return <LoadingComponent />
   return (
     <div className="product-container">
       <ProductImageState lrgImages={product.image}/>
