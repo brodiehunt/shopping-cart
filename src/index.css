@@ -293,6 +293,15 @@ header .logo {
 	text-decoration: line-through;
 }
 
+.product-info .add-cart-error-container {
+	color: white;
+	background-color: rgba(255, 0, 0, 0.7);
+	padding: 1rem;
+	border: 1px solid red;
+	border-radius: 0.5rem;
+	
+}
+
 .product-info .quantity-container {
 	display: flex;
 	justify-content: space-between;

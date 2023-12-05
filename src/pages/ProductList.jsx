@@ -37,10 +37,10 @@ const ProductList = () => {
   const productCards = itemList ? itemList.map((item, index) => {
     return (
       <ProductCard key={item.id}
-        item={item}
+        item={{...item, image: [item.image]}}
         id={item.id}
         price={item.price}
-        imgUrl={item.image}
+        imgUrl={[item.image]}
         title={item.title}
         handleAddToCart={addToCart}
       />
@@ -56,10 +56,10 @@ const ProductList = () => {
           id: 0,
           title: "Fall Limited Edition Sneakers",
           price: "150.00",
-          image: '/image-product-1.jpg'
+          image: ['/image-product-1.jpg']
         }}
         id={0}
-        imgUrl={'/image-product-1.jpg'}
+        imgUrl={['/image-product-1.jpg']}
         title="Fall Limited Edition Sneakers"
         price={"150.00"}
         handleAddToCart={addToCart}

@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useOutletContext} from 'react-router-dom';
 import ProductImageState from '../components/ProductImageState.jsx';
 import IconPlus from '../assets/icon-plus.svg';
 import IconMinus from '../assets/icon-minus.svg';
@@ -8,9 +8,11 @@ import IconCart from '../assets/icon-cart-white.svg';
 const Product = () => {
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
+  const [addCartError, setAddCartError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currentQuantity, setCurrentQuantity] = useState(0);
   const {productId} = useParams(); 
+  const {addToCart} = useOutletContext();
 
   useEffect(() => {
     console.log(productId);
@@ -28,7 +30,7 @@ const Product = () => {
     } else {
       // do something with api data
       
-      fetch(`https://fakestoreapi.com/products/${productId}`)
+      fetch(`https://fakestoreapi.com/products/${productId}`,{mode: 'cors'})
         .then((response)=> {
           if (response.status >= 400) {
             throw new Error("server error")
@@ -51,7 +53,15 @@ const Product = () => {
     
   }, []);
 
+  function handleAddCart(){
+    if (currentQuantity === 0) {
+      return setAddCartError("Must have a valid quantity");
+    }
+    addToCart(product, currentQuantity);
+  }
+
   function changeQuantity(isIncrease) {
+    setAddCartError(null);
     if (isIncrease) {
       setCurrentQuantity(currentQuantity + 1);
     } else {
@@ -86,6 +96,9 @@ const Product = () => {
             </div>
           }
         </div>
+        {addCartError && 
+          <div className="add-cart-error-container">{addCartError}</div>
+        }
         <div className="btns-container">
           <div className="quantity-container">
             <button onClick={() => changeQuantity(false)}>
@@ -96,7 +109,10 @@ const Product = () => {
               <img src={IconPlus} alt="Increase quantity button icon"/>
             </button>
           </div>
-          <button className="add-cart-btn">
+          <button 
+            onClick={handleAddCart}
+            className="add-cart-btn"
+          >
             <img src={IconCart} alt="add to cart icon"/>
             Add to cart
           </button>

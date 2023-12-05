@@ -8,7 +8,7 @@ const ProductCard = ({item, imgUrl, title, price, id, handleAddToCart}) => {
         <img 
           className="product-card-img"
           alt="Some card image"
-          src={imgUrl}
+          src={imgUrl[0]}
         />
       </div>
       <h2 className="product-card-title">
