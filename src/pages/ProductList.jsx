@@ -55,7 +55,8 @@ const ProductList = () => {
         item={{
           id: 0,
           title: "Fall Limited Edition Sneakers",
-          price: "150.00"
+          price: "150.00",
+          image: '/image-product-1.jpg'
         }}
         id={0}
         imgUrl={'/image-product-1.jpg'}

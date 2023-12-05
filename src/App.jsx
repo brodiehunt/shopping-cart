@@ -7,7 +7,7 @@ import Footer from './components/Footer.jsx';
 
 function App() {
   const [cart, setCart] = useState([]);
-
+  console.log(cart)
 
   function addToCart(product, quantity) {
     console.log('adding to cart', product, quantity)
@@ -17,7 +17,7 @@ function App() {
     if (existingItem) {
       const newState = cart.map((item, index) => {
         if (item.id == newItem.id) {
-          item.quantity = item.quantity + quantity;
+          return { ...item, quantity: item.quantity + quantity }
         }
         return item;
       })
@@ -44,8 +44,8 @@ function App() {
     setCart(newState);
   }
 
-  function deleteCartItem(deleteItem) {
-    const newState = cart.filter((item) => item.id !== deleteItem.id)
+  function deleteCartItem(id) {
+    const newState = cart.filter((item) => item.id !== id)
     setCart(newState);
   }
 

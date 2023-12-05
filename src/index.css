@@ -158,6 +158,7 @@ header .logo {
 
 .cart-dropdown .items-container {
 	display: flex;
+	flex-direction: column;
 	margin-top: 2.5rem;
 	justify-content: center;
 	align-items: center;
@@ -168,6 +169,38 @@ header .logo {
 	color: var(--text-light);
 	font-weight: 700;
 	line-height: 1.625rem
+}
+
+.items-container .cart-item {
+	display: flex;
+	width: 100%;
+	gap: 0.5rem;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.item-container .cart-item .img-container {
+	width: 3.125rem;
+}
+
+.cart-item .img-container img {
+	width: 3.125rem;
+	aspect-ratio: 1/1;
+	object-fit: contain;
+}
+
+.cart-item h3 {
+	margin-bottom: 0.5rem;
+}
+.cart-item .price {
+	display: flex;
+	width: 100%;
+	gap: 0.5rem;
+}
+
+.cart-item .price .total {
+	margin-left: auto;
 }
 /* Header Profile */
 

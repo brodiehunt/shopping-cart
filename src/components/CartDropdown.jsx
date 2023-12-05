@@ -1,12 +1,27 @@
 import {useState} from 'react';
 import CartIcon from '../assets/icon-cart.svg';
+import CartItem from './CartItem';
 
 const CartDropdown = ({cart, deleteCartItem, changeCartItemQuantity}) => {
   const [modalOpen, setModalOpen] = useState(false);
-  let purposeFalse = false;
   function toggleModal() {
     setModalOpen(!modalOpen);
   };
+
+  const cartItems = cart.map((item) => {
+    return (
+      <CartItem 
+        key={item.id}
+        id={item.id}
+        imageUrl={item.image}
+        title={item.title}
+        price={item.price}
+        quantity={item.quantity}
+        total={item.quantity * (parseFloat(item.price))}
+        deleteCartItem={deleteCartItem}
+      />
+    )
+  })
 
   return (
     <div className="cart-icon-container">
@@ -18,8 +33,8 @@ const CartDropdown = ({cart, deleteCartItem, changeCartItemQuantity}) => {
         <div className="cart-dropdown">
           <h2>Cart</h2>
           <div className="items-container">
-            {purposeFalse ? (
-                <div>Items will go here</div>
+            {cartItems.length > 0 ? (
+                cartItems
               ) : (
                 <div className="no-items">Your cart is empty.</div>
               )
