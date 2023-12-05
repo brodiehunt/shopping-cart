@@ -1,9 +1,15 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 import CartIcon from '../assets/icon-cart.svg';
 import CartItem from './CartItem';
 
 const CartDropdown = ({cart, deleteCartItem, changeCartItemQuantity}) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const location = useLocation();
+  useEffect(() => {
+    setModalOpen(false);
+  }, [location.pathname]);
+
   function toggleModal() {
     setModalOpen(!modalOpen);
   };

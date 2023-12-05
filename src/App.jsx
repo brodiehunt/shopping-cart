@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
@@ -7,10 +7,14 @@ import Footer from './components/Footer.jsx';
 
 function App() {
   const [cart, setCart] = useState([]);
-  console.log(cart)
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [location.pathname])
+
 
   function addToCart(product, quantity) {
-    console.log('adding to cart', product, quantity)
     const newItem = {...product};
     const existingItem = cart.find((item) => item.id == newItem.id);
 

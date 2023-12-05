@@ -1,11 +1,15 @@
-import {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import {Link, useLocation} from 'react-router-dom';
 import IconMenu from '../assets/icon-menu.svg';
 import IconClose from '../assets/icon-close.svg';
 
 
 const Navbar = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const location = useLocation();
+  useEffect(() => {
+    setModalOpen(false);
+  }, [location.pathname])
 
   function toggleModalOpen() {
     setModalOpen(!modalOpen);
