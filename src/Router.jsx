@@ -4,6 +4,7 @@ import Home from './pages/Home.jsx';
 import ProductList from './pages/ProductList.jsx';
 import Product from './pages/Product.jsx';
 import ShoppingCart from './pages/ShoppingCart.jsx';
+import Contact from './pages/Contact.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 
 const Router = () => {
@@ -29,6 +30,10 @@ const Router = () => {
         {
           path: '/cart',
           element: <ShoppingCart />
+        },
+        {
+          path: '/contact',
+          element: <Contact />
         }
       ]
     }

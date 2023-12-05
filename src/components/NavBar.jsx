@@ -18,7 +18,6 @@ const Navbar = () => {
         <li><Link to="/products">Products</Link></li>
         <li><Link to="/products/category/mens">Mens</Link></li>
         <li><Link to="/products/category/womens">Womens</Link></li>
-        <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
       </ul>
       { modalOpen && 
@@ -31,7 +30,6 @@ const Navbar = () => {
               <li><Link to="/products">Products</Link></li>
               <li><Link to="/products/category/mens">Mens</Link></li>
               <li><Link to="/products/category/womens">Womens</Link></li>
-              <li><Link to="/about">About</Link></li>
               <li><Link to="/contact">Contact</Link></li>
             </ul>
           </div>
