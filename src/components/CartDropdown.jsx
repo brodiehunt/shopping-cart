@@ -13,7 +13,7 @@ const CartDropdown = ({cart, deleteCartItem, changeCartItemQuantity}) => {
       <CartItem 
         key={item.id}
         id={item.id}
-        imageUrl={item.image}
+        imageUrl={item.image[0]}
         title={item.title}
         price={item.price}
         quantity={item.quantity}

@@ -54,11 +54,16 @@ q:before, q:after {
 	content: none;
 }
 
+.app-container {
+	display: flex; 
+	flex-direction: column;
+	min-height: 100vh;
+}
 /* HEADER STYLES */
 
 header {
-	/* position: fixed;
-	width: 100%; */
+	/* position: fixed; */
+	width: 100%;
 	display: flex;
 	align-items: center;
 	padding: 1.2rem 1.5rem;
@@ -192,15 +197,36 @@ header .logo {
 
 .cart-item h3 {
 	margin-bottom: 0.5rem;
+	font-size: 1rem;
+	font-weight: 400;
+	color: var(--text-light);
 }
+
 .cart-item .price {
 	display: flex;
 	width: 100%;
 	gap: 0.5rem;
 }
 
+.cart-item .single-price {
+	color: var(--text-light);
+	font-weight: 400;
+
+}
 .cart-item .price .total {
 	margin-left: auto;
+	font-weight: 700;
+	color: var(--text-dark);
+	font-size: 1rem;
+}
+
+.cart-item .delete-icon img {
+	cursor: pointer;
+	transition: 0.2s ease-in all;
+}
+
+.cart-item .delete-icon img:hover {
+	transform: scale(1.2);
 }
 /* Header Profile */
 
@@ -504,6 +530,7 @@ footer {
 	padding: 4.5rem 1.5rem;
 	border-radius: 0rem 6.25rem 0rem 0rem;
 	text-align: center;
+	margin-top: auto;
 }
 
 footer .logo-container {
@@ -776,6 +803,7 @@ footer .icon-link img{
 	/* Footer styles */
 	footer {
 		gap: 10rem;
+		margin-top: auto;
 	}
 }
 

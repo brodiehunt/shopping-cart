@@ -9,8 +9,7 @@ const CartItem = ({id, imageUrl, title, price, quantity, total, deleteCartItem, 
       <div className="item-info">
         <h3>{title}</h3>
         <div className="price">
-          <div className="single-price">${price} x </div>
-          <div className="quantity">{quantity}</div>
+          <div className="single-price">${price} x {quantity}</div>
           <div className="total">${total}</div>
         </div>
       </div>

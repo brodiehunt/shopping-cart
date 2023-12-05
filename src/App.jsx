@@ -50,7 +50,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app-container">
       <Header 
         cart={cart}
         deleteCartItem={deleteCartItem}
