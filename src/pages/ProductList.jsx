@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useOutletContext} from 'react-router-dom';
 import ProductCard from "../components/ProductCard";
 
 const ProductList = () => {
@@ -7,6 +7,8 @@ const ProductList = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const {category} = useParams();
+  const {addToCart} = useOutletContext();
+
   useEffect(() => {
     let fetchUrl = 'https://fakestoreapi.com/products'
     if (category === 'mens') {
@@ -35,11 +37,12 @@ const ProductList = () => {
   const productCards = itemList ? itemList.map((item, index) => {
     return (
       <ProductCard key={item.id}
+        item={item}
         id={item.id}
         price={item.price}
         imgUrl={item.image}
         title={item.title}
-        handleAddToCart={null}
+        handleAddToCart={addToCart}
       />
     )
   }) : null;
@@ -49,10 +52,16 @@ const ProductList = () => {
   return (
     <section className="product-card-grid">
       <ProductCard 
+        item={{
+          id: 0,
+          title: "Fall Limited Edition Sneakers",
+          price: "150.00"
+        }}
         id={0}
         imgUrl={'/image-product-1.jpg'}
         title="Fall Limited Edition Sneakers"
         price={"150.00"}
+        handleAddToCart={addToCart}
       />
       {productCards}
     </section>

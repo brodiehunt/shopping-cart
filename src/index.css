@@ -129,6 +129,15 @@ header .logo {
 	cursor: pointer;
 }
 
+.cart-icon-container .cart-btn .cart-value {
+	border-radius: 50%;
+	color: white;
+	background-color: var(--primary);
+	padding: 0.3rem;
+	position: absolute;
+	transform: translate(90%, -70%);
+}
+
 .cart-icon-container .cart-dropdown {
 	position: fixed;
 	background-color: white;
