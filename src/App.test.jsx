@@ -1,12 +1,25 @@
-import {describe, it, expect} from 'vitest';
+import {describe, it, expect, vi} from 'vitest';
+import {render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import App from './App.jsx';
+import {BrowserRouter as Router} from 'react-router-dom';
 
+window.scrollTo = vi.fn();
 
-describe('something truthy and falsy', () => {
-  it('true to be true', () => {
-    expect(true).toBe(true);
-  });
+describe('App component', () => {
+  beforeEach(() => {
+    render(
+      <Router >
+        <App />
+      </Router>
+    )
+  })
+  it('expect header to be rendered to the screen', () => {
+   expect(screen.getByTestId("main-header")).toBeInTheDocument();
+  })
 
-  it('false to be false', () => {
-    expect(false).toBe(false);
-  });
+  it('expect footer to be rendered to the screen', () => {
+    const footer = screen.getByTestId("footer");
+    expect(footer).toBeInTheDocument();
+  })
 });

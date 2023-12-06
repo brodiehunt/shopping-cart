@@ -16,7 +16,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="header-navigation">
+    <nav className="header-navigation" aria-label="main-navigation">
       <button onClick={toggleModalOpen} className="hamburger-btn"><img src={IconMenu} alt="Open menu button"/></button>
       <ul className="link-list">
         <li><Link to="/products">Products</Link></li>

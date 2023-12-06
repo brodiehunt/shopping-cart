@@ -7,7 +7,7 @@ import Linkedin from '../assets/linkedin.svg';
 const Footer = () => {
 
   return (
-    <footer>
+    <footer data-testid="footer">
       <div className="logo-container">
         <Link to="/">
           <img src={Logo} alt="Sneakers Company Logo"/>
@@ -43,7 +43,9 @@ const Footer = () => {
             <a className="icon-link" 
               target="_blank" 
               href="https://instagram.com"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+              aria-label="Go to our Facebook"
+            >
               <img src={Facebook} alt="facebook icon"/>
               Facebook
             </a>
@@ -53,7 +55,9 @@ const Footer = () => {
               target="_blank" 
               href="https://facebook.com"
               rel="noopener noreferrer">
-              <img src={Instagram} alt="instagram icon"/>
+              <img src={Instagram} alt="instagram icon"
+              aria-label="Go to our instagram"
+            />
               Instagram
             </a>
           </li>
@@ -62,7 +66,9 @@ const Footer = () => {
               target="_blank" 
               href="https://linkedin.com"
               rel="noopener noreferrer">
-              <img src={Linkedin} alt="linkedin icon"/>
+              <img src={Linkedin} alt="linkedin icon"
+              aria-label="Go to our linkedIn"
+            />
               Linkedin
             </a>
           </li>

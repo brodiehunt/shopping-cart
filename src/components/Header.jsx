@@ -6,7 +6,7 @@ import CartDropdown from './CartDropdown.jsx';
 const Header = ({cart, deleteCartItem, changeCartItemQuantity}) => {
 
   return (
-    <header>
+    <header data-testid="main-header">
       <Navbar />
       <Link to="/">
        <img className="logo" src={Logo} alt="Sneakers Company Logo"/>
