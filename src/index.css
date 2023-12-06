@@ -756,8 +756,7 @@ textarea::placeholder {
 /* Loading component */
 .loading-container {
 	width: 200px;
-	margin: 0 auto; 
-	margin-top: 10rem;
+	margin: 10rem auto; 
 	display: flex;
 	justify-content: center;
 }
