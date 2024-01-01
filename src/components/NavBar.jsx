@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {Link, useLocation} from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import IconMenu from '../assets/icon-menu.svg';
 import IconClose from '../assets/icon-close.svg';
 
@@ -24,9 +25,15 @@ const Navbar = () => {
         <li><Link to="/products/category/womens">Womens</Link></li>
         <li><Link to="/contact">Contact</Link></li>
       </ul>
+      <AnimatePresence>
       { modalOpen && 
         <div className="nav-modal">
-          <div className="sidebar">
+          <motion.div 
+            className="sidebar"
+            initial={{x: -250}}
+            animate={{x: 0}}
+            exit={{x: -250}}
+          >
             <button className="close-menu-btn" onClick={toggleModalOpen}>
               <img src={IconClose} alt="Close menu icon"/>
             </button>
@@ -36,9 +43,10 @@ const Navbar = () => {
               <li><Link to="/products/category/womens">Womens</Link></li>
               <li><Link to="/contact">Contact</Link></li>
             </ul>
-          </div>
+          </motion.div>
       </div>
       }
+      </AnimatePresence>
     </nav>
   )
 };

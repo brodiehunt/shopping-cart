@@ -7,18 +7,20 @@ const Header = ({cart, deleteCartItem, changeCartItemQuantity}) => {
 
   return (
     <header data-testid="main-header">
-      <Navbar />
-      <Link to="/">
-       <img className="logo" src={Logo} alt="Sneakers Company Logo"/>
-      </Link>
-      <CartDropdown 
-        deleteCartItem={deleteCartItem}
-        changeCartItemQuantity={changeCartItemQuantity}
-        cart={cart}
-      />
-      <div className="profile-icon-container">
-        <img src={Avatar} alt="User profile avatar"/>
-      </div>
+      <div className="header-content">
+        <Navbar />
+        <Link to="/">
+        <img className="logo" src={Logo} alt="Sneakers Company Logo"/>
+        </Link>
+        <CartDropdown 
+          deleteCartItem={deleteCartItem}
+          changeCartItemQuantity={changeCartItemQuantity}
+          cart={cart}
+        />
+        <div className="profile-icon-container">
+          <img src={Avatar} alt="User profile avatar"/>
+        </div>
+        </div>
     </header>
   )
 }
